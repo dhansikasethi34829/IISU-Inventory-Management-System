@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     checkAuth();
-    console.log("Dhansika");
+    // console.log("Dhansika");
   }, []);
 
   const checkAuth = async () => {

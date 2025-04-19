@@ -13,7 +13,7 @@ function ProtectedRoute({ children }) {
   async function checkForToken() {
     try {
       setLoading(true);
-      const response = await Instance.get("/auth/checkToken",{withCredentials:true});
+      const response = await Instance.get("/auth/checkToken", {withCredentials:true});
       if (response.status === 200) {
         setIsAuthenticated(true);
         setLoading(false);
