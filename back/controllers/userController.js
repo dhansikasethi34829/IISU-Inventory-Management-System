@@ -43,7 +43,7 @@ export const loginUser = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      sameSite: "none",
       maxAge: 2 * 60 * 60 * 1000,
     });
 
@@ -56,9 +56,9 @@ export const loginUser = async (req, res) => {
 
 export const checkAuth = async (req, res) => {
   const token = req.cookies.token;
-  // if (!token) {
-  //   return res.status(401).json({ message: "No token found, please log in" });
-  // }
+  if (!token) {
+    return res.status(401).json({ message: "No token found, please log in" });
+  }
 
   try {
     jwt.verify(token, process.env.JWT_SECRET);
